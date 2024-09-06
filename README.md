@@ -19,30 +19,31 @@ The SaffronStays API provides room occupancy and rate information for Airbnb roo
   - **404 Not Found**: If the room ID does not exist or no data is available.
   - **500 Internal Server Error**: For unexpected server errors.
 
-## Environment Variables
+## Technologies Used
 
-The following environment variables are required to run the service:
+The following technologies were used to create the service:
 
-- `DB_HOST`: Database host URL
-- `DB_USER`: Database username
-- `DB_PASSWORD`: Database password
-- `DB_NAME`: Name of the database
-- `DB_PORT`: Port number for the database (default: 5432)
-- `PORT`: Port on which the API will run (default: 8000)
+- `Supabase`: Used to host the service's database
+- `Vercel`: Used to host the service
 
 ## How to Start the Service
 
-To start the service, ensure the environment variables are set up correctly, and use Docker:
+To start the service, ensure the environment variables are set up correctly:
 
 1. Clone the repository.
-2. Set up your `.env` file with the required environment variables.
-3. Run the following commands:
+2. Copy the `.env.sample` file to `.env` and set up your `.env` file with the required environment variables, including your own database URL in the `DB_URL` variable.
 
-   ```bash
-   docker-compose up --build
-   ```
+  ```bash
+    cp .env.sample .env
+  ```
 
-    The service will be available at http://localhost:8000.
+3. Run the following command:
+
+  ```bash
+  go run .
+  ```
+
+The service will be available at http://localhost:8000.
 
 ## Project File Tree
 ```bash
@@ -54,12 +55,11 @@ saffronstays-api
 │   ├── occupancy.go
 │   └── rate.go
 ├── config
+│   ├── pgxpool_config.go
 │   └── db.go
 ├── .env.sample
 ├── go.mod
 ├── go.sum
-├── Dockerfile
 ├── README.md
-├── .gitignore
-└── docker-compose.yml
+└── .gitignore
 ```
