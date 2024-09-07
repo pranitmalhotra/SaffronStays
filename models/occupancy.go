@@ -20,7 +20,7 @@ func GetOccupancyPercentage(db *gorm.DB, roomID int) (float64, error) {
 
 	query := `
 		SELECT AVG(occupancy_percentage)
-		FROM occupancies
+		FROM occupancy
 		WHERE room_id = $1 AND occupancy_date >= CURRENT_DATE - INTERVAL '5 months'
 	`
 

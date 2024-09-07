@@ -42,7 +42,7 @@ func RoomHandler(db *gorm.DB) http.HandlerFunc {
 		}
 
 		if occupancy == 0 && avgRate == 0 && highRate == 0 && lowRate == 0 {
-			http.Error(w, "Only Room 1 and Room 2 are available", http.StatusNotFound)
+			http.Error(w, "Data is available only for Room 1 & 2", http.StatusNotFound)
 			return
 		}
 

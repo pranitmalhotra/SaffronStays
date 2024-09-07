@@ -11,6 +11,11 @@ type Rate struct {
 	NightRate float64 `gorm:"column:night_rate"`
 }
 
+// Explicitly specify the table name to be "rate"
+func (Rate) TableName() string {
+	return "rate"
+}
+
 type RateStats struct {
 	AvgRate  float64 `gorm:"column:avg_rate"`
 	HighRate float64 `gorm:"column:max_rate"`
@@ -18,7 +23,7 @@ type RateStats struct {
 }
 
 // GetRates retrieves the average, highest, and lowest night rates for a given room
-// within the next 30 days. It calculates these statistics using a query on the "rates" 
+// within the next 30 days. It calculates these statistics using a query on the "rate" 
 // table filtered by room ID and date range.
 func GetRates(db *gorm.DB, roomID int) (float64, float64, float64, error) {
 	var stats RateStats
