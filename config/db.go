@@ -20,8 +20,6 @@ func ConnectDB() (*gorm.DB, error) {
 		log.Fatal(err)
 	}
 
-	InitPgxPool()
-
 	dbURL := os.Getenv("DB_URL")
 	if dbURL == "" {
 		return nil, fmt.Errorf("DB_URL environment variable not set")
